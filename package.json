@@ -1,0 +1,32 @@
+{
+  "name": "luau-delivery",
+  "version": "1.0.0",
+  "description": "Secure, versioned Luau script delivery platform",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node --watch server/server.js",
+    "test": "node --test",
+    "lint": "eslint .",
+    "validate:luau": "node server/server.js --validate-luau",
+    "audit": "npm audit --audit-level=high"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "compression": "^1.7.5",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.1.0",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "nanoid": "^5.1.5",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.19.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
