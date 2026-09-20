@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="description"
+    content="Secure, versioned Luau script delivery platform."
+  >
+
+  <meta name="theme-color" content="#080b12">
+
+  <title>Luau Delivery</title>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <span class="brand-mark">L</span>
+      <span>Luau<span class="brand-muted">Delivery</span></span>
+    </a>
+
+    <nav class="nav">
+      <a href="/scripts">Scripts</a>
+      <a href="/docs">API Docs</a>
+      <a href="/login">Dashboard</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">
+          <span class="status-dot"></span>
+          Luau-first script delivery
+        </div>
+
+        <h1>
+          Ship Luau code
+          <span class="gradient-text">without the noise.</span>
+        </h1>
+
+        <p class="hero-copy">
+          A lightweight, versioned delivery platform for
+          authorized Roblox clients and development workflows.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button primary" href="/scripts">
+            Browse Scripts
+          </a>
+
+          <a class="button secondary" href="/docs">
+            API Documentation
+          </a>
+        </div>
+
+        <div class="endpoint-card">
+          <div>
+            <span class="endpoint-label">RAW ENDPOINT</span>
+
+            <code>
+              GET /api/v1/scripts/example/raw
+            </code>
+          </div>
+
+          <button
+            class="copy-button"
+            data-copy="/api/v1/scripts/example/raw"
+          >
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-code">
+        <div class="window-bar">
+          <span></span>
+          <span></span>
+          <span></span>
+          <small>example.luau</small>
+        </div>
+
+        <pre><code><span class="comment">-- Luau delivery</span>
+<span class="keyword">local</span> Players = game:GetService(<span class="string">"Players"</span>)
+
+<span class="keyword">local function</span> greet(player)
+    <span class="keyword">print</span>(
+        <span class="string">"Hello, "</span> .. player.Name
+    )
+<span class="keyword">end</span>
+
+Players.PlayerAdded:Connect(greet)</code></pre>
+      </div>
+    </section>
+
+    <section class="features">
+      <article class="feature">
+        <span class="feature-icon">↯</span>
+        <h2>Fast delivery</h2>
+        <p>
+          Minimal processing and lightweight raw responses
+          designed for low-overhead retrieval.
+        </p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-icon">◆</span>
+        <h2>Versioned scripts</h2>
+        <p>
+          Keep immutable script versions with SHA-256
+          integrity information.
+        </p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-icon">⌁</span>
+        <h2>Scoped access</h2>
+        <p>
+          Short-lived bearer tokens, authorization scopes,
+          rate limiting, and audit logging.
+        </p>
+      </article>
+
+      <article class="feature">
+        <span class="feature-icon">◈</span>
+        <h2>Luau focused</h2>
+        <p>
+          Lua/Luau file support, developer-oriented
+          presentation, raw delivery, and API documentation.
+        </p>
+      </article>
+    </section>
+
+    <section class="security-section">
+      <div>
+        <div class="eyebrow">SECURITY MODEL</div>
+
+        <h2>
+          Protect the platform.
+          Understand the client boundary.
+        </h2>
+      </div>
+
+      <div class="security-copy">
+        <p>
+          Code delivered to an untrusted Roblox client is
+          accessible to that client. No web architecture can
+          honestly guarantee that received Luau source cannot
+          be inspected, copied, dumped, or reverse engineered.
+        </p>
+
+        <p>
+          This platform therefore focuses on authentication,
+          authorization, scoped access, short-lived credentials,
+          rate limiting, auditability, and keeping sensitive
+          business logic server-side.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>Luau Delivery v1.0.0</span>
+    <span>
+      <a href="/docs">Documentation</a>
+    </span>
+  </footer>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
