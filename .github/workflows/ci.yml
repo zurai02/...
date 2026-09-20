@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+        continue-on-error: false
+
+      - name: Validate Luau
+        run: npm run validate:luau
+
+      - name: Tests
+        run: npm test
+
+      - name: Dependency audit
+        run: npm audit --audit-level=high
+
+      - name: Check tracked secrets
+        shell: bash
+        run: |
+          if git grep -nE \
+            'AKIA[0-9A-Z]{16}|-----BEGIN (RSA|OPENSSH|EC|DSA) PRIVATE KEY-----|ghp_[A-Za-z0-9]{30,}' \
+            -- ':!package-lock.json'; then
+            echo "Potential secret detected."
+            exit 1
+          fi
+
+      - name: Verify required files
+        shell: bash
+        run: |
+          test -f package.json
+          test -f public/index.html
+          test -f public/app.js
+          test -f public/style.css
+          test -f server/server.js
+          test -f README.md
